@@ -851,6 +851,145 @@
             white-space: nowrap;
         }
 
+        /* ===== HERO IMAGE ===== */
+        .hero-image {
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(240,185,11,0.12);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(240,185,11,0.05);
+            position: relative;
+        }
+        .hero-image img, .hero-image video {
+            width: 100%; display: block;
+        }
+        .hero-image-badge {
+            position: absolute;
+            top: 12px; left: 12px;
+            padding: 4px 12px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(240,185,11,0.2);
+            border-radius: 6px;
+            font-size: 11px; font-weight: 600;
+            color: var(--accent-gold);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ===== PROOF GALLERY ===== */
+        .proof-section { padding: 60px 0; }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .proof-card {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            opacity: 0; transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+        .proof-card.visible { opacity: 1; transform: translateY(0); }
+        .proof-card:hover {
+            border-color: rgba(240,185,11,0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .proof-card img, .proof-card video {
+            width: 100%; display: block;
+        }
+        .proof-card-label {
+            padding: 12px 16px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .proof-card-label span:first-child {
+            font-size: 13px; font-weight: 600;
+        }
+        .proof-card-label .tag {
+            font-size: 10px;
+            padding: 3px 8px;
+            background: var(--accent-green-soft);
+            border: 1px solid rgba(0,200,150,0.2);
+            border-radius: 4px;
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* ===== STRATEGY IMAGES ===== */
+        .strategy-section { padding: 60px 0; }
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .strategy-card {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            opacity: 0; transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+        .strategy-card.visible { opacity: 1; transform: translateY(0); }
+        .strategy-card img {
+            width: 100%; display: block;
+        }
+        .strategy-card-info {
+            padding: 16px 18px;
+        }
+        .strategy-card-info h4 {
+            font-size: 15px; font-weight: 700; margin-bottom: 4px;
+        }
+        .strategy-card-info p {
+            font-size: 12px; color: var(--text-secondary); line-height: 1.6;
+        }
+
+        /* ===== REVIEW IMAGES ===== */
+        .testimonial-image {
+            margin-top: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .testimonial-image img {
+            width: 100%; display: block;
+        }
+
+        /* ===== BEFORE/AFTER ===== */
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            align-items: center;
+            margin-top: 24px;
+        }
+        .ba-card {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            text-align: center;
+            opacity: 0; transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+        .ba-card.visible { opacity: 1; transform: translateY(0); }
+        .ba-card img { width: 100%; display: block; }
+        .ba-card-label {
+            padding: 10px;
+            font-size: 12px; font-weight: 700;
+        }
+        .ba-card.before .ba-card-label { color: var(--accent-red); }
+        .ba-card.after .ba-card-label { color: var(--accent-green); }
+        .ba-arrow {
+            font-size: 28px;
+            color: var(--accent-gold);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .ba-arrow.visible { opacity: 1; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .compare-grid { grid-template-columns: 1fr; }
@@ -861,6 +1000,11 @@
             .timeline { padding-left: 40px; }
             .timeline-dot { left: -32px; }
             .floating-bar { flex-direction: column; gap: 8px; padding: 10px 16px; }
+            .proof-grid { grid-template-columns: 1fr; }
+            .strategy-grid { grid-template-columns: 1fr; }
+            .ba-grid { grid-template-columns: 1fr; gap: 8px; }
+            .ba-arrow { transform: rotate(90deg); justify-self: center; }
+            .hero-image { margin: 0 -8px; border-radius: 12px; }
         }
     </style>
 </head>
@@ -896,6 +1040,11 @@
             지하철 타고 출근하는 40분 — <strong>+3.2% 수익이 쌓였습니다.</strong><br>
             퇴근하고 저녁 먹는 동안 — <strong>4번째 익절이 완료됐습니다.</strong>
         </p>
+
+        <div class="hero-image reveal">
+            <div class="hero-image-badge">RAID-X DASHBOARD · LIVE</div>
+            <img src="images/dashboard.jpg" alt="RAID-X 자동매매 대시보드">
+        </div>
     </div>
 </section>
 
@@ -1024,6 +1173,18 @@
                 </ul>
             </div>
         </div>
+
+        <div class="ba-grid">
+            <div class="ba-card before reveal">
+                <img src="images/pain-before.jpg" alt="수동매매 스트레스">
+                <div class="ba-card-label">😰 수동매매의 현실</div>
+            </div>
+            <div class="ba-arrow reveal">→</div>
+            <div class="ba-card after reveal">
+                <img src="images/pain-after.jpg" alt="RAID-X 자동매매 후">
+                <div class="ba-card-label">😌 RAID-X 도입 후</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -1109,6 +1270,66 @@
 
 <div class="divider"></div>
 
+<!-- ===== STRATEGY CHARTS ===== -->
+<section class="strategy-section">
+    <div class="container">
+        <span class="section-label">STRATEGY</span>
+        <h2 class="section-title">실전 전략 차트</h2>
+        <p class="section-desc">RAID-X가 사용하는 핵심 전략의 실제 차트입니다.</p>
+
+        <div class="strategy-grid">
+            <div class="strategy-card reveal">
+                <img src="images/chart-magnet.jpg" alt="마그넷 전략 차트">
+                <div class="strategy-card-info">
+                    <h4>🧲 마그넷 전략</h4>
+                    <p>VWMA 기반 평균 회귀 전략. 가격이 이탈한 후 평균으로 돌아오는 구간을 정확히 포착합니다.</p>
+                </div>
+            </div>
+            <div class="strategy-card reveal">
+                <img src="images/chart-ultimate.jpg" alt="얼티밋 전략 차트">
+                <div class="strategy-card-info">
+                    <h4>⚡ 얼티밋 전략</h4>
+                    <p>추세 추종 + 모멘텀 복합 전략. 강한 방향성이 나올 때 빠르게 올라타 수익을 극대화합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PROOF GALLERY ===== -->
+<section class="proof-section">
+    <div class="container">
+        <span class="section-label">REAL RESULTS</span>
+        <h2 class="section-title">실제 매매 기록</h2>
+        <p class="section-desc">조작 없는 실전 매매 영상과 기록입니다.</p>
+
+        <div class="proof-grid">
+            <div class="proof-card reveal">
+                <video autoplay muted loop playsinline>
+                    <source src="images/profit-1.mp4" type="video/mp4">
+                </video>
+                <div class="proof-card-label">
+                    <span>실시간 매매 화면</span>
+                    <span class="tag">실제 기록</span>
+                </div>
+            </div>
+            <div class="proof-card reveal">
+                <video autoplay muted loop playsinline>
+                    <source src="images/profit-3.mp4" type="video/mp4">
+                </video>
+                <div class="proof-card-label">
+                    <span>일일 매매 리포트</span>
+                    <span class="tag">실제 기록</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ===== DAILY REPORT SAMPLE ===== -->
 <section class="report-section">
     <div class="container">
@@ -1185,6 +1406,9 @@
                 <div class="testimonial-text">
                     아침에 출근해서 점심때 폰 보니까 익절 알림이 3개 와 있었어요. 이게 진짜 되는구나 싶었습니다.
                 </div>
+                <div class="testimonial-image">
+                    <img src="images/review-1.jpg" alt="고객 A 수익 인증">
+                </div>
             </div>
             <div class="testimonial-card reveal">
                 <div class="testimonial-header">
@@ -1197,6 +1421,9 @@
                 <div class="testimonial-text">
                     수동으로 하다가 멘탈 나간 경험이 많았는데, RAID-X 쓰고나서 차트 스트레스가 사라졌습니다.
                 </div>
+                <div class="testimonial-image">
+                    <img src="images/review-2.jpg" alt="고객 B 수익 인증">
+                </div>
             </div>
             <div class="testimonial-card reveal">
                 <div class="testimonial-header">
@@ -1208,6 +1435,9 @@
                 </div>
                 <div class="testimonial-text">
                     가게 운영하느라 차트 볼 시간이 없었는데, 봇이 알아서 하니까 부수입이 생기더라고요.
+                </div>
+                <div class="testimonial-image">
+                    <img src="images/review-3.jpg" alt="고객 C 수익 인증">
                 </div>
             </div>
         </div>
