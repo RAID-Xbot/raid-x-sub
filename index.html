@@ -1178,8 +1178,8 @@
         .proof-stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 28px;
-            align-items: start;
+            gap: 20px;
+            align-items: stretch;
         }
         .proof-stats-left {
             border-radius: 14px;
@@ -1197,109 +1197,20 @@
         }
         .proof-stats-right.visible { opacity: 1; transform: translateY(0); }
 
-        .winrate-panel {
+        .winrate-image-wrap {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 28px 24px;
-            backdrop-filter: blur(8px);
-        }
-        .winrate-header {
-            text-align: center;
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-        .winrate-reset {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-left: 6px;
-        }
-        .winrate-scoreboard {
+            overflow: hidden;
+            height: 100%;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            align-items: flex-start;
         }
-        .winrate-score {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 16px 24px;
-            border-radius: 12px;
-            min-width: 80px;
-        }
-        .win-score {
-            background: var(--accent-green-soft);
-            border: 1px solid rgba(0,200,150,0.2);
-        }
-        .lose-score {
-            background: rgba(255,71,87,0.08);
-            border: 1px solid rgba(255,71,87,0.15);
-        }
-        .rate-score {
-            background: var(--accent-gold-soft);
-            border: 1px solid rgba(240,185,11,0.2);
-        }
-        .winrate-score-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 36px;
-            font-weight: 900;
-            line-height: 1;
-        }
-        .win-score .winrate-score-num { color: var(--accent-green); }
-        .lose-score .winrate-score-num { color: var(--accent-red); }
-        .rate-score .winrate-score-num { color: var(--accent-gold); }
-        .winrate-score-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .winrate-roi {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px;
-            background: rgba(0,200,150,0.06);
-            border: 1px solid rgba(0,200,150,0.12);
-            border-radius: 10px;
-            margin-bottom: 16px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-        .winrate-roi-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--accent-green);
-        }
-        .winrate-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .winrate-detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 9px 4px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-        .winrate-detail-row:last-child { border-bottom: none; }
-        .winrate-detail-row .green { color: var(--accent-green); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-        .winrate-detail-row .red { color: var(--accent-red); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-        .winrate-detail-row.highlight-row {
-            margin-top: 4px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(240,185,11,0.1);
-            border-bottom: none;
-            font-weight: 600;
-            color: var(--text-primary);
+        .winrate-image-wrap img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: top center;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1406,46 +1317,8 @@
                 <img src="images/profit-proof.png" alt="RAID-X 수익 인증" style="width:100%; display:block;">
             </div>
             <div class="proof-stats-right reveal">
-                <div class="winrate-panel">
-                    <div class="winrate-header">
-                        <span>오늘의 전적</span>
-                        <span class="winrate-reset">(매일 09시 초기화)</span>
-                    </div>
-                    <div class="winrate-scoreboard">
-                        <div class="winrate-score win-score">
-                            <span class="winrate-score-num">9</span>
-                            <span class="winrate-score-label">승</span>
-                        </div>
-                        <div class="winrate-score lose-score">
-                            <span class="winrate-score-num">1</span>
-                            <span class="winrate-score-label">패</span>
-                        </div>
-                        <div class="winrate-score rate-score">
-                            <span class="winrate-score-label" style="margin-bottom:4px;">승률</span>
-                            <span class="winrate-score-num" style="font-size:28px;">90%</span>
-                        </div>
-                    </div>
-                    <div class="winrate-roi">
-                        <span>오늘 ROI</span>
-                        <span class="winrate-roi-value">+68.46%</span>
-                    </div>
-                    <div class="winrate-details">
-                        <div class="winrate-detail-row">
-                            <span>연승</span><span>0</span>
-                        </div>
-                        <div class="winrate-detail-row">
-                            <span>연패</span><span>1</span>
-                        </div>
-                        <div class="winrate-detail-row">
-                            <span>최고</span><span class="green">+12.46%</span>
-                        </div>
-                        <div class="winrate-detail-row">
-                            <span>최저</span><span class="red">-2.14%</span>
-                        </div>
-                        <div class="winrate-detail-row highlight-row">
-                            <span>누적 거래</span><span class="green">-2.14%</span>
-                        </div>
-                    </div>
+                <div class="winrate-image-wrap">
+                    <img src="images/winrate-panel.png" alt="오늘의 전적 9승 1패 승률 90%">
                 </div>
             </div>
         </div>
